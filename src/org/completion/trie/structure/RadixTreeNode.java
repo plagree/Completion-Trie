@@ -5,27 +5,26 @@ package org.completion.trie.structure;
  * 
  * @author Tahseen Ur Rehman
  * @email tahseen.ur.rehman {at.spam.me.not} gmail.com
- * @param <T>
  */
 public class RadixTreeNode implements Comparable {
 	private String key;
-
 	private SortedArrayList<RadixTreeNode> children; //To order by score
-
 	private RadixTreeNode parent;
-
 	private boolean real;
-
 	private float value;
+	private RadixTreeNode bestDescendant;
 
 	/**
-	 * intailize the fields with default values to avoid null reference checks
+	 * initialize the fields with default values to avoid null reference checks
 	 * all over the places
 	 */
 	public RadixTreeNode() {
 		key = "";
 		children = new SortedArrayList<RadixTreeNode>();
 		real = false;
+		parent = null;
+		value = 0;
+		bestDescendant = this;
 	}
 
 	public float getValue() {
@@ -34,6 +33,14 @@ public class RadixTreeNode implements Comparable {
 
 	public void setValue(float data) {
 		this.value = data;
+	}
+	
+	public RadixTreeNode getBestDescendant() {
+		return bestDescendant;
+	}
+
+	public void setBestDescendant(RadixTreeNode bd) {
+		this.bestDescendant = bd;
 	}
 
 	public String getKey() {
@@ -100,6 +107,7 @@ public class RadixTreeNode implements Comparable {
 		if (this.isReal())
 			this.parent.updateValues();
 		else {
+			this.setBestDescendant(this.getChildren().get(0).getBestDescendant());
 			float val = this.getChildren().get(0).getValue();
 			if (this.value >= val)
 				return;

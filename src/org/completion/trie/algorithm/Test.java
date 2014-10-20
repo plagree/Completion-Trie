@@ -12,6 +12,7 @@ public class Test {
 		patricia.insert("bba", (float)1.0);
 		patricia.insert("caca", (float)3.0);
 		patricia.insert("caccc", (float)1.0);
+		System.out.println("Before line 16");
 		patricia.insert("cbac", (float)2.0);
 		patricia.insert("cbba", (float)1.0);
 		patricia.insert("c", (float)10.0);
@@ -24,9 +25,10 @@ public class Test {
 
 		patricia.display();
 
-		RadixTreeNode pf = patricia.searchPrefix("c");
-		System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size");
-
+		RadixTreeNode pf = patricia.searchPrefix("dd");
+		System.out.println(pf);
+		System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size\n"+pf.getBestDescendant().getKey()+" : best descendant");
+		
 	}
 
 }

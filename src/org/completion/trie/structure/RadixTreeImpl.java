@@ -19,8 +19,6 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 	public RadixTreeImpl() {
 		root = new RadixTreeNode();
 		root.setKey("#");
-		root.setReal(false);
-		root.setParent(null);
 		size = 0;
 	}
 
@@ -157,6 +155,7 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 					n.setValue(node.getValue());
 					node.setReal(false);
 					node.insertChildWithRespectToAncestors(n);
+					System.out.println(node.getBestDescendant()==n);
 				}
 				RadixTreeNode n = new RadixTreeNode();
 				n.setKey(newText);
@@ -187,6 +186,7 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 			n1.setReal(node.isReal());
 			n1.setValue(node.getValue());
 			n1.setChildren(node.getChildren());
+			n1.setBestDescendant(node.getBestDescendant());
 
 			node.setKey(key.substring(0, numberOfMatchingCharacters));
 			node.setReal(false);
@@ -268,8 +268,9 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 					break;
 				}
 			}
-		} else if (node.getKey().equals("") == true
-				|| (numberOfMatchingCharacters < key.length() && numberOfMatchingCharacters >= node.getKey().length())) {
+			if (result == null)
+				result = node;
+		} else if (node.getKey().equals("") == true || (numberOfMatchingCharacters < key.length() && numberOfMatchingCharacters >= node.getKey().length())) {
 			String newText = key.substring(numberOfMatchingCharacters, key.length());
 			for (RadixTreeNode child : node.getChildren()) {
 				if (child.getKey().startsWith(newText.charAt(0) + "")) {
