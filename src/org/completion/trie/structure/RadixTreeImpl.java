@@ -155,7 +155,6 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 					n.setValue(node.getValue());
 					node.setReal(false);
 					node.insertChildWithRespectToAncestors(n);
-					System.out.println(node.getBestDescendant()==n);
 				}
 				RadixTreeNode n = new RadixTreeNode();
 				n.setKey(newText);
