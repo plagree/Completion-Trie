@@ -21,9 +21,9 @@ public class Test {
 		patricia.insert("ddddddde", (float)3.0);
 		patricia.insert("d", (float)4.0);
 		patricia.insert("cacab", (float)15.0);
-		
+
 		patricia.display();
-		
+
 		RadixTreeNode pf = patricia.searchPrefix("c");
 		System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size");
 
