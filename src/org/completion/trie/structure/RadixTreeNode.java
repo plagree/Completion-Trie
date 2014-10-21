@@ -34,7 +34,7 @@ public class RadixTreeNode implements Comparable {
 	public void setValue(float data) {
 		this.value = data;
 	}
-	
+
 	public RadixTreeNode getBestDescendant() {
 		return bestDescendant;
 	}
@@ -100,7 +100,7 @@ public class RadixTreeNode implements Comparable {
 		return (this.value - anotherNodeValue) < 0 ? 1 : -1;    
 	}
 
-	/*
+	/**
 	 * Recursive update through all parents when updating a value of the current node.
 	 */
 	public void updateValues() {
@@ -124,7 +124,28 @@ public class RadixTreeNode implements Comparable {
 		return;
 	}
 
-	/*
+	/**
+	 * Recursive update through all parents previous best descendant.
+	 * Needs to continue getting updated even if a parent's value is better (it's normal
+	 * because it corresponds to the previous best one)
+	 */
+	public void updatePreviousBestValue() {
+		if (this.isReal())
+			this.parent.updatePreviousBestValue();
+		else {
+			this.setBestDescendant(this.getChildren().get(0).getBestDescendant());
+			float val = this.getChildren().get(0).getValue();
+			this.value = val;
+			if (this.parent == null)
+				return;
+			this.parent.getChildren().remove(this);
+			this.parent.getChildren().insertSorted(this);
+			this.parent.updatePreviousBestValue();
+		}
+		return;
+	}
+
+	/**
 	 * Insert a node in the children list and update all ancestors if necessary
 	 */
 	public void insertChildWithRespectToAncestors(RadixTreeNode newChild) {

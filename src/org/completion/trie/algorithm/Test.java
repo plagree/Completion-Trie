@@ -15,15 +15,14 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RadixTreeImpl patricia = new RadixTreeImpl();
-		/*
+		/**
 		 * SMALL TESTS
-		 * 
+		 */ 
 		patricia.insert("ab", (float)4.0);
 		patricia.insert("b", (float)2.0);
 		patricia.insert("bba", (float)1.0);
 		patricia.insert("caca", (float)3.0);
 		patricia.insert("caccc", (float)1.0);
-		System.out.println("Before line 16");
 		patricia.insert("cbac", (float)2.0);
 		patricia.insert("cbba", (float)1.0);
 		patricia.insert("c", (float)10.0);
@@ -34,16 +33,22 @@ public class Test {
 		patricia.insert("d", (float)4.0);
 		patricia.insert("cacab", (float)15.0);
 
-		//patricia.display();
+		patricia.display();
 
 		RadixTreeNode pf = patricia.searchPrefix("dd");
 		System.out.println(pf);
 		System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size\n"+pf.getBestDescendant().getKey()+" : best descendant");
-		*/
 		
-		/*
+		pf.getBestDescendant().setValue((float)0.5);
+		patricia.display();
+		pf.getBestDescendant().updatePreviousBestValue();
+		pf = patricia.searchPrefix("dd");
+		System.out.println(pf);
+		System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size\n"+pf.getBestDescendant().getKey()+" : best descendant");
+		
+		/**
 		 * BIG TEST WITH TWITTER DUMP
-		 */
+		 *
 		
 		Connection con = null;
         PreparedStatement pst = null;
@@ -94,6 +99,6 @@ public class Test {
         if (patricia != null) {
         	RadixTreeNode pf = patricia.searchPrefix("");
         	System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size\n"+pf.getBestDescendant().getKey()+" : best descendant");
-        }
+        }*/
     }
 }
