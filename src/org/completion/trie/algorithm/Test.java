@@ -23,15 +23,21 @@ public class Test {
 		patricia.insert("bba", (float)1.0);
 		patricia.insert("caca", (float)3.0);
 		patricia.insert("caccc", (float)1.0);
+		System.out.println("hhhe");
 		patricia.insert("cbac", (float)2.0);
 		patricia.insert("cbba", (float)1.0);
+		System.out.println("ICI");
 		patricia.insert("c", (float)10.0);
 		patricia.insert("cb", (float)0.5);
 		patricia.insert("ddddddd", (float)1.0);
 		patricia.insert("ddaaa", (float)2.0);
 		patricia.insert("ddddddde", (float)3.0);
+		patricia.insert("TFBJp", (float)3.0);
+		patricia.insert("TFBJP", (float)3.0);
 		patricia.insert("d", (float)4.0);
 		patricia.insert("cacab", (float)15.0);
+		
+		System.out.println(patricia.searchPrefix("TFBJP").getWord());
 		
 		System.out.println(patricia.find("cacab"));
 		System.out.println(patricia.find("d"));
