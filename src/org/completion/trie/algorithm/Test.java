@@ -32,6 +32,14 @@ public class Test {
 		patricia.insert("ddddddde", (float)3.0);
 		patricia.insert("d", (float)4.0);
 		patricia.insert("cacab", (float)15.0);
+		
+		System.out.println(patricia.find("cacab"));
+		System.out.println(patricia.find("d"));
+		System.out.println(patricia.find("cb"));
+		
+		System.out.println(patricia.searchPrefix("cacab").getValue());
+		System.out.println(patricia.searchPrefix("d").getValue());
+		System.out.println(patricia.searchPrefix("cb").getValue());
 
 		patricia.display();
 
