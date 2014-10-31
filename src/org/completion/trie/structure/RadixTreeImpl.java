@@ -267,6 +267,7 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 			result = node;
 		} else if(numberOfMatchingCharacters == key.length() && numberOfMatchingCharacters == node.getKey().length()) {
 			for (RadixTreeNode child: node.getChildren()) {
+				// RETURNS FINAL WORD IF THE NODE HAS A CHILD WITH SAME WORD
 				if (child.getKey().equals("")) {
 					result = child;
 					break;
