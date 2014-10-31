@@ -60,7 +60,7 @@ public class Test {
 		
 		patricia.display();
 
-		RadixTreeNode pf = patricia.searchPrefix("TFBJ");
+		/*RadixTreeNode pf = patricia.searchPrefix("TFBJ");
 		System.out.println(pf.getKey()+" : key,\t"+pf.getValue()+" : value,\t"+pf.getChildren().size()+" : size,\t"+pf.getBestDescendant().getKey()+" : best descendant");
 		
 		pf = patricia.searchPrefix("TFBJP");
@@ -74,7 +74,7 @@ public class Test {
 		
 		pf = patricia.searchPrefix("TFBj");
 		System.out.println(pf.getKey()+" : key,\t"+pf.getValue()+" : value,\t"+pf.getChildren().size()+" : size,\t"+pf.getBestDescendant().getKey()+" : best descendant");
-		
+		*/
 		//pf.getBestDescendant().setValue((float)0.5);
 		//patricia.display();
 		//pf.getBestDescendant().updatePreviousBestValue();
@@ -82,6 +82,10 @@ public class Test {
 		//System.out.println(pf);
 		//System.out.println(pf.getKey()+" : key\n"+pf.getValue()+" : value\n"+pf.getChildren().size()+" : size\n"+pf.getBestDescendant().getKey()+" : best descendant");
 		
+		patricia.searchPrefix("TF").getBestDescendant().updatePreviousBestValue((float)3);
+		System.out.println(patricia.searchPrefix("TF").getBestDescendant().getWord());
+		//System.out.println(patricia.find("TF"));
+		patricia.display();
 		/**
 		 * BIG TEST WITH TWITTER DUMP
 		 *
