@@ -338,7 +338,7 @@ public class RadixTreeImpl implements RadixTree, Formattable {
 					}
 				}
 			}
-		} else if (node.getKey().equals("") == true // either we are at the
+		} else if (node.getKey().equals("#") == true // either we are at the
 				// root
 				|| (numberOfMatchingCharacters < prefix.length() && numberOfMatchingCharacters >= node.getKey().length())) { // OR we need to
 			// traverse the children
